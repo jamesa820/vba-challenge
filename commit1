@@ -1,0 +1,50 @@
+Sub Stock_Challenge()
+
+Dim Ticker As String
+Dim Table As Integer
+Dim Begin_year_open As Double
+Dim End_yr_close As Double
+Dim Row_Counts As Long
+
+    
+Row_Counts = Cells(Rows.Count, 1).End(xlUp).Row
+    
+    Table = 2
+    Begin_year_open = 0
+    End_yr_close = 0
+    
+For i = 2 To Row_Counts
+     
+If Begin_year_open = 0 Then
+    
+    Begin_year_open = Cells(i, 3).Value
+
+End If
+
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+    
+        Cells(Table, 9).Value = Cells(i, 1).Value
+        
+        End_yr_close = Cells(i, 6).Value
+        
+        
+        Cells(Table, 10).Value = End_yr_close - Begin_year_open
+        
+        
+        Table = Table + 1
+        
+        Begin_year_open = 0
+                 
+        End_yr_close = 0
+ 
+ 
+        
+    End If
+    
+Next i
+
+
+
+End Sub
+
+   
